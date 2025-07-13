@@ -39,4 +39,4 @@ Key components:
   `trade_count ~ Poisson(λ)`
 
 - **Timestamps**  
-  One row per second from 9:30 AM to 4:30 PM each day, across 10 days.
+  One row per second from 8:00 AM to 5:00 PM each day, across 10 days.
