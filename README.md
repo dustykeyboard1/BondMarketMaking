@@ -1,6 +1,6 @@
 # Bond Market Making Simulator
 
-This repository simulates a fixed income market-making strategy based on short rate dynamics, CIR-based bond pricing, and spread-sensitive trade arrivals. The code is organized into modular notebooks.
+This repository simulates a fixed income market-making strategy based on short rate dynamics, CIR-based bond pricing, and spread-sensitive trade arrivals. The code is organized into modular notebooks. **See PDF for more indepth explanation.**
 
 ## Contents
 
