@@ -27,14 +27,19 @@ Simulates second-by-second short rates over 252 trading days using Euler discret
 ### market_making_backtest.ipynb
 Simulates a market-making strategy quoting around CIR-based mid prices:
 
-- Bid/ask quotes skewed based on inventory:  
-  `bid = mid - spread/2 - γ * inventory`  
-  `ask = mid + spread/2 - γ * inventory`
+- Bid/ask quotes skewed based on inventory:
+  `skew = γ * ln(|inventory|)`
+  `bid = mid - spread/2 +- skew`
+  `ask = mid + spread/2 +- skew`
 - Trade arrival rates follow:  
   `λ = A * exp(-k * spread)`
 - Buys/sells are drawn from Poisson distributions per second:
   - `λ_bid = 0.5 * A_bid * exp(-k_bid * (mid - bid))`
   - `λ_ask = 0.5 * A_ask * exp(-k_ask * (ask - mid))`
+- Flow toxicity is estimated using a sigmoid function:
+  - `probability trade is toxic = 1 / (1 + exp{-x})`
+  - `x` represents the spread times sensitivity
+  - larger spread, more likely to be toxic 
 
 Liquidity parameters `A` and `k` are re-estimated every 1200 seconds using rolling regression of log volume vs. spread.
 
